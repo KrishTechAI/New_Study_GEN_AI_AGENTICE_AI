@@ -1,0 +1,32 @@
+5. The three projects we will build
+
+Project 1 — Banking Knowledge Assistant
+GenAI + RAG
+Answer questions using banking policies, support manuals and approved documents. Implement ingestion, chunking, embeddings, vector search, citations and evaluation.
+
+Skills: Python, model API, embedding model, vector database, LangChain, FastAPI.
+
+Project 2 — Production Incident Investigation Agent
+Agentic AI
+Accept an incident description, retrieve relevant runbooks, inspect simulated application logs, query a read-only database tool and recommend the next action. Require approval before consequential actions.
+
+Skills: LangGraph, tool calling, state, retries, MCP, SQL, logging and human approval.
+
+Project 3 — Enterprise AI Support Platform
+Production engineering
+Combine a RAG assistant and incident agent behind an API, with authentication, evaluation, tracing, audit logs, containerization and deployment.
+
+Skills: FastAPI, Docker, CI/CD, cloud deployment, observability and security.
+
+
+
+Each project should have a README, architecture diagram, setup instructions, tests, example requests, known limitations and measurable evaluation results. These will help you explain your work convincingly in interviews.
+6. Your interview preparation strategy
+You need to prepare for four different kinds of interviews.
+- Conceptual: “Explain self-attention and why Transformers became important.”
+- Coding: “Implement document chunking or a tool-calling function in Python.”
+- Architecture: “Design a RAG system for 100,000 banking documents.”
+- Production scenarios: “The agent is repeatedly calling a tool, the answer is incorrect, and latency has increased. How would you investigate?”
+A strong answer normally explains the concept, the decision behind it, the implementation, the trade-offs, and how you would validate the result.
+
+For example, when asked why you chose RAG instead of fine-tuning, do not simply say that RAG reduces hallucinations. Explain that RAG retrieves relevant external information at query time, making it useful for frequently changing documents and source citations. Fine-tuning is more appropriate for adapting model behavior, style, or task patterns, although the approaches can be combined.
