@@ -1,0 +1,105 @@
+Q: What is the difference between tokenization and embedding?
+
+Tokenization converts text into discrete tokens and token IDs. Embedding maps each token ID to a learned numerical vector.
+Tokenization identifies the units; embedding provides the vectors the neural network processes.
+
+Q: Why does a Transformer need positional encoding or another positional mechanism?
+
+Self-attention calculates relationships among token representations, but the attention operation alone does not tell the model the original order of the sequence. 
+Positional mechanisms provide information about token positions, helping the model distinguish different arrangements of the same tokens.
+
+
+5. Step 4 — Self-attention and Query, Key, Value
+This is one of the most important concepts in your GenAI interviews.
+
+Suppose the model processes:
+“The customer blocked the card because it was stolen.”
+
+To interpret it, the model needs contextual information about other words in the sentence. Self-attention allows a token's representation to incorporate information from other permitted token positions.
+
+Input token representations
+|
+Calculate Q, K and V
+|
+Q × K → attention scores
+|
+Softmax → attention weights
+|
+Weights × V → attention output
+|
+Context-enriched token representations
+
+1. Q and K → calculate matching scores.
+2. Softmax → convert scores into attention weights.
+3. Weights and V → combine Value vectors.
+4. Output → the updated token representation.
+           A context-enriched numerical representation of it
+
+Interview answer:
+“In self-attention, Query–Key dot products produce attention scores. After scaling and applying any attention mask, Softmax converts the scores into normalized attention weights.
+Those weights are multiplied by the Value vectors to produce the attention output.”
+                                                                 -----------------
+“Query, Key, and Value projections are fundamental to self-attention. Query–Key similarity scores determine attention weights, and those weights are used to combine Value vectors.
+The resulting attention output incorporates contextual information into each token's representation.”
+------------------------------------------------------------------------------
+
+The "attention output" is the updated numerical representation of a token after it combines information from other permitted tokens.
+
+Input representation of it
+Its initial numerical representation
+|
+Self-attention
+Calculates scores → Softmax weights → combines Value vectors
+|
+Attention output
+A context-enriched numerical representation of it
+|
+Next Transformer operations
+Residual connection, normalization and feed-forward network
+
+
+Why is the attention output required?
+Attention allows the model to build context-aware representations.
+
+For example:
+- “The bank approved my loan.”
+- “I sat beside the bank of the river.”
+The word bank is the same, but its surrounding words differ. Attention helps its representation incorporate the relevant context, helping later Transformer layers process the different meanings.
+
+
+The attention output is passed through the rest of the Transformer block. The model repeats these operations across many layers, progressively transforming the token representations.
+Eventually, the final representations are used to calculate scores for possible next tokens. During text generation, the model uses those scores to select or sample the next token.
+
+Interview-ready answer: The attention output is the weighted combination of Value vectors, based on Query–Key attention scores. 
+It gives each token a context-enriched representation, which subsequent Transformer layers use to process context and ultimately generate text.
+
+"""The attention mechanism in a Transformer helps each token build a context-aware representation by incorporating information from other relevant tokens.""""
+"Query, Key, and Value calculations help a Transformer produce a contextual representation of each token".
+-------------------------------------------------------------------------------
+Query, Key and Value: The model creates numerical vectors for the tokens.
+Attention scores: The Query for bank is compared with the Keys of other permitted tokens.
+Softmax: The scores are converted into attention weights.
+Attention output: The Value vectors are combined according to those weights, allowing the representation of bank to incorporate information from its context.
+Further layers: Additional Transformer operations refine the representation.
+
+Token embeddings
+|
+Self-attention
+|
+Gather information from other permitted tokens
+|
+Context-aware representations        ----> self attention done here
+|
+Feed-forward network and further layers
+|
+Final representations used for prediction
+
+“The attention mechanism enables a Transformer to build contextual representations of tokens by calculating attention weights and combining information from other permitted tokens. 
+This helps the model represent a token differently depending on its surrounding context.”
+----------------------------------------------------------------------------------
+The main difference
+- Self-attention: Helps each token gather information from other permitted tokens.
+- Feed-forward network (FFN): Further transforms the information in each token's representation.
+Think of self-attention as gathering information and the FFN as processing that information.
+
+
